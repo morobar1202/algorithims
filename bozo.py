@@ -4,8 +4,8 @@
 import random
 import time
 # the number of times you wisg to run the program
-TIMES =  1
-SIZE = 4
+TIMES = 1000
+SIZE = 10
 # takes the time the program starts
 start_time = time.time()
 # set up random number generator
@@ -26,20 +26,22 @@ while x < TIMES:
         # checks if the next number is smaller
         if new_list[p] > new_list[p + 1]:
             # finds two random numbers in the list and swaps them
-            x = random.choice(ind)
-            y = x
-            while y==x:
+            z = random.choice(ind)
+            y = z
+            while y==z:
                 y = random.choice(ind)
-            a = new_list[x]
+            a = new_list[z]
             b = new_list[y]
-            new_list[y] = b
-            new_list[x] = a
+            new_list[y] = a
+            new_list[z] = b
             # starts integrating through from the start of the list again
             p = -1
         n += 1
         p += 1
     print(f" sorted list {x + 1}: {new_list}")
     x += 1
+    p = 0
+    new_list=[]
 total = time.time() - start_time
 print(f"{(n/TIMES):.0f} interactions on average")
 print(f"total time: {total:.2f} (s)")
