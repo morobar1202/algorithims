@@ -7,6 +7,7 @@ A_VALUES = [1, 3, 5, 9, 11, 15, 17, 19, 21, 23, 25]
 
 
 def go_again():
+    """this function is only used to see if the user wants to cotinue using the progarm"""
     while True:
         go = 0
         try:
@@ -19,6 +20,7 @@ def go_again():
         
         
 def hide_or_unhide():
+    """asks wether or not the user wants to eycrpt or dycrpt text"""
     while True:
         crpt = 0
         try:
@@ -31,20 +33,26 @@ def hide_or_unhide():
 
 
 def get_new_letter(letter, a, b):
+    """encrpts letter"""
     index_let = ALPHA_LIST.index(letter)
+    # equation for encrpting
     new_let_index = index_let * a + b
     return ALPHA_LIST[new_let_index % 26]
 
 
 def get_old_letter(letter, a, b):
+    """dcrpts the letters"""
     index_let = ALPHA_LIST.index(letter)
+    # equation for dycrpting
     old_let_index = a * (index_let - b)
     return ALPHA_LIST[old_let_index % 26]
 
 
 def encrpt():
+    """where the encrption process is controlled"""
     a = ""
     b = ""
+    # this while loop is only used to make sure a and b are porperly inputed 
     while True:
         try:
             a = int(input(f"select an 'a' value from this list {A_VALUES} (NOTE! to dycrpt you must remember this value!): "))
@@ -55,6 +63,7 @@ def encrpt():
             pass
         print("Invalid input")
     word = input("enter the word that you want to encrpt(NOTE! spaces will be deleted!): ")
+    # gets rid of the spaces in the words entered by a user
     word = word.replace(" ", "")
     encrption = ""
     for letter in word:
@@ -64,8 +73,10 @@ def encrpt():
 
 
 def dycrpt():
+    """where the dycrption process is controlled"""
     a = ""
     b = ""
+    # this while loop is only used to make sure a and b are porperly inputed
     while True:
         try:
             a = int(input(f"select an 'a' value from this list {A_VALUES} (NOTE! this by be the original 'a' value!): "))
@@ -76,6 +87,7 @@ def dycrpt():
             pass
         print("Invalid input")
     crip = input("enter the criptext that you want to dycrpt: ")
+    # gets rid of the spaces in the chiphertext entered by a user
     crip = crip.replace(" ", "")
     a_inv = 0
     for i in INV:
@@ -95,6 +107,7 @@ def dycrpt():
     
 
 def main():
+    """ used to control the progarm """
     ans = hide_or_unhide()
     if ans == 1:
         encrpt()
@@ -102,5 +115,6 @@ def main():
         dycrpt()
     again = go_again()
     if again == 1:
+        # look at me using recurssion :)
         main()
 main()
