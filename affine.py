@@ -1,9 +1,9 @@
 # Liam Morrison
 # affine cipher
-# V 1.0
+# V 1.01
 ALPHA_LIST=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 INV = [[1], [3, 9], [5, 21], [7, 15], [11, 19], [17, 23], [25]]
-A_VALUES = [1, 3, 5, 9, 11, 15, 17, 19, 21, 21, 23, 25]
+A_VALUES = [1, 3, 5, 9, 11, 15, 17, 19, 21, 23, 25]
 
 
 def go_again():
@@ -81,7 +81,10 @@ def dycrpt():
     for i in INV:
         if a in i:
             if a == i[0]:
-                a = i[1]
+                try:
+                    a = i[1]
+                except IndexError:
+                    a = i[0]
             else:
                 a = i[0]
     word = ""
