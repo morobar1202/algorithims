@@ -47,7 +47,7 @@ def main():
         repeats += 1
     total = time.time() - start_time
     print(f"total time: {total:.2f} (s)")
-    print(f"average time: {(total/TIMES):.2f} (s)")
+    print(f"average time: {(total/TIMES):.10f} (s)")
 main()
         
     
